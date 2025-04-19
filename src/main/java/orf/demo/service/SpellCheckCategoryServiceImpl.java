@@ -72,7 +72,6 @@ public class SpellCheckCategoryServiceImpl implements SpellCheckCategoryService 
                 .orElseThrow(() -> new RuntimeException("Spell check not found with ID: " + spellCheckId));
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found with ID: " + categoryId));
-        // Инициализируем коллекцию categories перед использованием
         Hibernate.initialize(spellCheck.getCategories());
         spellCheck.addCategory(category);
         spellCheckCategoryRepository.save(spellCheck);
